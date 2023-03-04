@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image"
 import { CiLogin } from "react-icons/ci";
 import { BsArrowRight } from "react-icons/bs";
+import { useRouter } from "next/router";
 import {
   useAnchorWallet,
   useConnection,
@@ -12,6 +13,7 @@ import { useHackHound } from "../Connector/HackHound";
 import Login from "./Login";
 import { LoginUtil } from "./LoginUtil";
 const Main = () => {
+  const router = useRouter()
   const WalletMultiButtonDynamic = dynamic(
     async () =>
       (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
@@ -71,7 +73,7 @@ const Main = () => {
                 {initialized ? (
                   <>
                     <button
-                      onClick={() => router.push("/main")}
+                      onClick={() => router.push("/RestauntList")}
                       class={`md:mr-5 bg-white text-black py-4 px-10 rounded-3xl inline-flex items-center mx-10 mt-10 `}
                     >
                       <span>DIVE IN</span>

@@ -22,6 +22,7 @@ export function useHackHound() {
   const [initialized, setInitialized] = useState(false);
   const [currentUserName, setCurrnetUserName] = useState();
   const [currentUserEmail, setCurrentUserEmail] = useState();
+  const [restaurentList , setRestaurentList] = useState([])
 
   const [name , setName] = useState()
   const [email , setEmail] = useState()
@@ -49,6 +50,10 @@ export function useHackHound() {
           const userAcount = await program.account.userProfile.fetch(
             profilePda
           );
+
+          const allRestaurent = await program.account.restaurantAccount.all()
+          setRestaurentList(allRestaurent)
+          console.log(allRestaurent)
 
           if (userAcount) {
             setInitialized(true);
@@ -111,6 +116,30 @@ export function useHackHound() {
     }
   }
 
+  const getAllRestaurent = async () => {
+    if(program && publicKey){
+      try{
+        setLoading(true)
+        setTransactionPending(true)
+        const [statusPda] = findProgramAddressSync(
+          [utf8.encode("RESTAURANT_STATE") , publicKey.toBuffer()],
+          program.programId
+        )
+        const allRestaurent = await program.account.restaurantAccount.all()
+        //setRestaurentList(allRestaurent)
+        console.log(allRestaurent)
+      } catch(error){
+        setLoading(false)
+        setTransactionPending(false)
+        console.log(error)
+      }
+      finally{
+        setLoading(false)
+        setTransactionPending(false)
+      }
+    }
+  }
+
   return {
     loading,
     initialized,
@@ -119,8 +148,10 @@ export function useHackHound() {
     currentUserEmail,
     name,
     email,
+    restaurentList,
     nameHandler,
     emailHandler,
-    initializeUser
+    initializeUser,
+    getAllRestaurent,
   }
 }
