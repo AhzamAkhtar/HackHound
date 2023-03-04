@@ -17,9 +17,9 @@ const Main = () => {
           }}
         >
           <Image
-            src="/mainpic.jpg"
+            src="/maintheme.gif"
             className="rounded-3xl"
-            alt="Mountains with snow"
+            alt="Oops! we will fix this real quick..."
             layout="fill"
             objectFit="cover"
           />
@@ -34,8 +34,8 @@ const Main = () => {
               textAlign: "center",
             }}
           >
-            Start a New Journey
-            <p>With buzz... </p>
+            <p >Start a Delicious Journey</p>
+            <p >With Starlight Café... </p>
           </h1>
           <div class="flex justify-center">
             {publicKey ? (

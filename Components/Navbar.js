@@ -24,8 +24,9 @@ const Navbar = () => {
       <header class="text-gray-600 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-           <Image src="/logo.png" alt="image" width={90} height={90} className="rounded-xl text-5xl"/>
-            <h1 class="ml-3 text-4xl text-white">Buzz</h1>
+           <Image src="/logoF.png" alt="image" width={90} height={90} className="rounded-xl text-5xl"/>
+            <h1 class="ml-3 text-4xl text-white">Starlight Café</h1>
+            {/* <h5 class="ml-3 text-4xl text-white">MARTIAN CUISINE</h5> */}
           </a>
           <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <a class="mr-5 hover:text-white text-xl"></a>
