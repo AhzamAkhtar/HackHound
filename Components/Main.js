@@ -1,10 +1,38 @@
-import { useState } from "react"
+import { useState  , useEffect} from "react"
+import dynamic from "next/dynamic";
 import Image from "next/image"
 import { CiLogin } from "react-icons/ci";
 import { BsArrowRight } from "react-icons/bs";
+import {
+  useAnchorWallet,
+  useConnection,
+  useWallet,
+} from "@solana/wallet-adapter-react";
+import { useHackHound } from "../Connector/HackHound";
+import Login from "./Login";
+import { LoginUtil } from "./LoginUtil";
 const Main = () => {
-    const [initialized , setInitialized] = useState(true)
-    const [publicKey , setPublicKey] = useState(true)
+  const WalletMultiButtonDynamic = dynamic(
+    async () =>
+      (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
+    { ssr: false }
+  )
+  const { publicKey } = useWallet();
+    const {
+      initialized,
+      currentUserName,
+      currentUserEmail
+    } = useHackHound()
+    const [isPublicKey, setPublicKey] = useState(false);
+    const { loginState, turnLoginTrue } = LoginUtil();
+    useEffect(() => {
+      const check = () => {
+        if (publicKey) {
+          setPublicKey(true);
+        }
+      };
+      check();
+    }, [publicKey]);
     return(
         <>
         <div id="top">
@@ -38,12 +66,12 @@ const Main = () => {
             <p>With buzz... </p>
           </h1>
           <div class="flex justify-center">
-            {publicKey ? (
+            {isPublicKey ? (
               <>
                 {initialized ? (
                   <>
                     <button
-                      //onClick={() => router.push("/main")}
+                      onClick={() => router.push("/main")}
                       class={`md:mr-5 bg-white text-black py-4 px-10 rounded-3xl inline-flex items-center mx-10 mt-10 `}
                     >
                       <span>DIVE IN</span>
@@ -53,11 +81,11 @@ const Main = () => {
                 ) : (
                   <>
                     <button
-                      //onClick={() => turnLoginTrue()}
+                      onClick={() => turnLoginTrue()}
                       class={`md:ml-5 bg-white text-black py-4 px-10 rounded-3xl inline-flex items-center mx-10 mt-10 `}
                     >
                       <span className="text-xl">Create Your Account</span>
-                      //<CiLogin className="ml-1 w-8 text-3xl" />
+                      <CiLogin className="ml-1 w-8 text-3xl" />
                     </button>
                   </>
                 )}
@@ -73,13 +101,13 @@ const Main = () => {
               </>
             )}
           </div>
-          {/* {loginState ? (
+          {loginState ? (
             <>
-              <Login />
+              <Login/>
             </>
           ) : (
             <></>
-          )} */}
+          )}
         </div>
       </div>
         </>

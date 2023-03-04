@@ -1,24 +1,21 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
-//import { useBuzz } from "../Connector/buzz";
+import { useHackHound } from "../Connector/HackHound";
 import { CiLogin } from "react-icons/ci";
-//import { NavbarUtil } from "../utils/NavbarUtil";
+import { NavbarUtil } from "../utils/NavbarUtil";
 import { useRouter } from "next/router";
 import Image from 'next/image'
 const Navbar = () => {
-    const [initialized , setInitialized] = useState(true)
   const router = useRouter();
   console.log(router.asPath);
-  //const { initialized } = useBuzz();
+  const { initialized } = useHackHound();
   const WalletMultiButtonDynamic = dynamic(
     async () =>
       (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
     { ssr: false }
   );
-  //const { word, home } = NavbarUtil();
-  //temp
-  const [home,sethome] = useState(true)
+  const { word, home } = NavbarUtil();
   return (
     <>
       <header class="text-gray-600 body-font">
@@ -38,7 +35,7 @@ const Navbar = () => {
             }}
           />
           <button class="bg-white text-black py-2 px-4 rounded-3xl inline-flex items-center">
-            <span>word</span>
+            <span>{word}</span>
             {initialized ? (
               <>
                 {home ? (

@@ -10,7 +10,7 @@ export const WalletConnectProvider = ({children}) =>{
 
     const endpoint = useMemo(()=>{
         if(network ===WalletAdapterNetwork.Devnet){
-            return 'https://solemn-ancient-liquid.solana-devnet.discover.quiknode.pro/1849a9a948872208a291c23da45c385169c01a70/'
+            return 'https://distinguished-green-forest.solana-devnet.discover.quiknode.pro/4ac26149c3ecad83db077bec0aa773b1fe19249b/'
         }
 
         return clusterApiUrl(network)
