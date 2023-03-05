@@ -49,10 +49,10 @@ const Login = () => {
               scrolling="no"
               src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=%C4%B0zmir+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
             >
-            <h2 className='flex justify-left mx-10 text-white text-4xl mt-5'>a</h2>
-              <h2 className='flex justify-left mx-10 text-yellow-400 text-4xl mt-5'>decentralized</h2>
-              <h2 className='flex justify-left mx-10 text-white text-4xl mt-5'>way to</h2>
-              <h2 className='flex justify-left mx-10 text-yellow-400 text-4xl mt-5'>socialize ...... !!</h2>
+            <h2 className='flex justify-left mx-10 text-white text-6xl mt-5'>The </h2>
+              <h2 className='flex justify-left mx-10 text-red-400 text-6xl mt-5'>Martian</h2>
+              <h2 className='flex justify-left mx-10 text-white text-6xl mt-5'>way to</h2>
+              <h2 className='flex justify-left mx-10 text-red-400 text-6xl mt-5'>Much.!!!</h2>
             </div>
            
           </div>
@@ -77,10 +77,10 @@ const Login = () => {
             </div>
             <div class="relative mb-4">
               <label for="email" class="leading-7 text-sm text-white">
-                Age
+                Email
               </label>
               <input
-                placeholder="Enter Your Age"
+                placeholder="Enter Your Email"
                 onChange={emailHandler}
                 value={email}
                 type="text"
